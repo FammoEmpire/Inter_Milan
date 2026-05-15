@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FammoPedia.com/Inter_Milan</title>
+    <style>
+    body {
+  margin: 0;
+  font-family: Arial;
+  background-color: white;
+}
+
+.FE_Text {
+  font-family: verdana;
+  color: white;
+}
+
+.TextBoxes {
+  display: absolut;
+  top: 100%;
+  left: 10;
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  align-items: left;
+  margin: 20px;
+  padding: 20px;
+  
+}
+
+.TextBoxes img {
+  width: 200px;
+  height: auto;
+  align-items: center;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  background: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* DESKTOP MENU */
+.navLinks {
+  display: flex;
+  gap: 10px;
+  align-items: left;
+}
+
+/* BUTTONS */
+button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #555;
+}
+
+/* GAMES DROPDOWN */
+.gamesContainer {
+  position: relative;
+  display: flex;
+}
+
+/* dropdown hidden by default */
+.gamesMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  background: #111;
+  padding: 10px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition: 0.25s ease;
+}
+
+/* show class */
+.gamesMenu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* hover dropdown for desktop */
+@media (min-width: 111801px) {
+  .gamesContainer:hover .gamesMenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+
+    margin-left: 10px; /* adds space so it's not stuck to the button */
+
+    transform: none;
+    }
+}
+
+/* HAMBURGER */
+.menuButton {
+  display: none;
+  background: #333;
+
+
+ 
+}
+
+/* MOBILE MODE */
+@media (max-width: 450px) {
+
+  .menuButton {
+    display: block;
+  }
+
+  .navLinks {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 60px;
+  left: 10px;
+
+  background: black;
+  padding: 10px;
+  gap: 10px;
+
+  /* animation stuff */
+  opacity: 0;
+
+
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: 0.25s ease;
+}
+
+.navLinks.show {
+  display: flex; 
+  opacity: 1;
+  transform: translateY(0);
+
+  pointer-events: auto;
+}
+
+  /* mobile dropdown overrides hover */
+  .gamesMenu {
+    position: fixed;
+    background: black;
+    top: 20%;
+    left: 100;
+
+    margin-left: 100px; /* adds space so it's not stuck to the button */
+
+  opacity: 0;
+  transform: translateY(-20px); 
+
+  pointer-events: none;
+
+  transition: 0.25s ease;
+  }
+}
+
+      </style>
+  </head>
+  <body>
+    <div class="navbar">
+
+  <button class="menuButton" onclick="toggleMenu()">☰</button>
+
+  <div class="navLinks">
+    <img src="Logo.png" width="45px" height="45px">
+  </div> 
+
+  <div class="FE_Text">
+    <h2 style="color: white;">Fammo Empire</h2>
+  </div>
+
+  <div class="navLinks" id="menu">
+    
+    <button><a href="/Home/">Home</a></button>
+
+    <div class="gamesContainer">
+
+      <button onclick="toggleGames()">More ▸</button>
+
+      <div class="gamesMenu" id="gamesMenu">
+        <button><a href="/FammoPedia/">FammoPedia</a></button>
+        <button><a href="/SurvivingDiddy/">SurvivingDiddy</a></button>
+        <button><a href="/Home/">HomePage</a></button>
+      </div>
+
+    </div>
+    
+    <button>About</button>
+    <button>Contact</button>
+
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<div class="TextBoxes">
+  <h2><b>Inter Milan</b></h2> 
+  <p>Inter Milan is one of the best if not the best football or soccer (for the McDonalds wariors) teams thathas ever existed.
+  They have very good player like Lautaro Martines, Bastoni, Dumfris, Dimarco, Sommer and many more, They are also known for their "park the buss" taktic that their past coatch Jose Mourinho.</p>
+  <img src="" width="200px" height="auto">
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("show");
+}
+
+function toggleGames() {
+  document.getElementById("gamesMenu").classList.toggle("show");
+}
+
+/* click outside to close */
+document.addEventListener("click", function(event) {
+
+  let menu = document.getElementById("menu");
+  let games = document.getElementById("gamesMenu");
+  let button = document.querySelector(".menuButton");
+
+  if (!menu.contains(event.target) && !button.contains(event.target)) {
+    menu.classList.remove("show");
+    games.classList.remove("show");
+  }
+});
+</script>
+  </body>
+</html>
